@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marginalia</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="library">
+    <header class="brand">
+      <h1>Marginalia</h1>
+      <p>Ask questions across your own documents and see exactly where each answer comes from.</p>
+    </header>
+
+    <div id="drop" class="drop" tabindex="0" role="button" aria-label="Add files">
+      <strong>Drop PDF, TXT or MD files here</strong>
+      <span>or click to choose files</span>
+      <input id="file" type="file" multiple accept=".pdf,.txt,.md,.markdown" hidden>
+    </div>
+
+    <div class="adders">
+      <button type="button" id="btn-note" class="ghost">Paste text</button>
+      <button type="button" id="btn-url" class="ghost">Add a link</button>
+    </div>
+
+    <form id="note-form" class="panel" hidden>
+      <input id="note-title" type="text" placeholder="Title (optional)" maxlength="120">
+      <textarea id="note-text" rows="5" placeholder="Paste your notes here"></textarea>
+      <div class="row"><button type="submit">Save note</button><button type="button" class="ghost" data-close>Cancel</button></div>
+    </form>
+
+    <form id="url-form" class="panel" hidden>
+      <input id="url-input" type="url" placeholder="https://example.com/article" required>
+      <div class="row"><button type="submit">Add link</button><button type="button" class="ghost" data-close>Cancel</button></div>
+    </form>
+
+    <p id="add-status" class="status" role="status"></p>
+
+    <h2>Library</h2>
+    <p class="hint">Tick the documents to search.</p>
+    <ul id="docs" class="docs"></ul>
+    <p id="docs-empty" class="hint">Nothing here yet. Add a file, some text or a link to begin.</p>
+
+    <footer id="mode" class="mode"></footer>
+  </aside>
+
+  <main>
+    <div id="thread" class="thread" aria-live="polite">
+      <div id="empty" class="empty">
+        <p class="empty-title">Your answers will appear here.</p>
+        <p>Add a document on the left, then ask something like <em>"What are the main conclusions?"</em> or <em>"What does it say about deadlines?"</em></p>
+      </div>
+    </div>
+    <form id="ask-form" class="composer">
+      <textarea id="q" rows="1" placeholder="Ask about your documents" aria-label="Your question"></textarea>
+      <button type="submit" id="send">Ask</button>
+    </form>
+  </main>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
